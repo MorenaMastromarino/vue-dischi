@@ -1,39 +1,50 @@
 <template>
   <div class="row row-cols-5 gx-4 gy-3" >
 
-    <div class="col">
-      <div class="card p-3 text-center">
-        <img src="https://www.onstageweb.com/wp-content/uploads/2018/09/bon-jovi-new-jersey.jpg" alt="">
-        <h3 class="py-3">New jersey</h3>
-        <p class="mb-0">Bon Jovi</p>
-        <p class="">1988</p>
-      </div>
-    </div>     
+    <SongCard 
+      v-for="(song, index) in songs"
+      :key="index"
+      :song = song
+    />
+    
 
   </div>
 </template>
 
 <script>
+import axios from 'axios';
+import SongCard from './SongCard.vue';
+
 export default {
   name: 'SongsList',
-
+  components: {
+    SongCard,
+  },
+  data(){
+    return{
+      songs: [],
+      apiUrl: 'https://flynn.boolean.careers/exercises/api/array/music',
+    }
+  },
+  methods: {
+    getApi(){
+      axios.get(this.apiUrl)
+      .then(r => {
+        
+        this.songs = r.data.response;
+    
+      })
+      .catch(e => {
+        console.log(e);
+      })
+    }
+  },
+  mounted(){
+    this.getApi();
+  }
 }
 </script>
 
 <style lang="scss" scoped>
- @import '../assets/style/vars.scss';
-
-  .card {
-    background-color: $primary-color;
-    
-    
-    h3 {
-      text-transform: uppercase;
-      font-size: 20px;      
-    }
-    p {
-      font-size: 14px;
-      color: #6B8080;
-    }
-  }
+ 
 </style>
