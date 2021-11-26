@@ -29,7 +29,6 @@ export default {
   main {
     min-height: calc(100vh - 70px);
     background-color: darken($primary-color, 6%);
-    color: #fff;    
-    
+    color: #fff;   
   }
 </style>
