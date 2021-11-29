@@ -1,7 +1,7 @@
 <template>
   <div>
-    <Header />
-    <Main />
+    <Header @changeSelectedGenre="sendSelectedGenre"/>
+    <Main :genre="selectedGenre" />
   </div>
 </template>
 
@@ -14,6 +14,17 @@ export default {
   components: {
     Header,
     Main,
+  },
+  data(){
+    return {
+      selectedGenre:'',
+    }
+  },
+  methods:{
+    sendSelectedGenre(genre){
+      this.selectedGenre = genre;
+      console.log('genre in App', this.selectedGenre);
+    }
   }
 }
 </script>
