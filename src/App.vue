@@ -22,8 +22,7 @@ export default {
   },
   methods:{
     sendSelectedGenre(genre){
-      this.selectedGenre = genre;
-      console.log('genre in App', this.selectedGenre);
+      this.selectedGenre = genre;      
     }
   }
 }

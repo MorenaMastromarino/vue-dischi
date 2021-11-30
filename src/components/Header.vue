@@ -4,11 +4,11 @@
     <img src="../assets/img/spotify-logo.png" alt="spotify logo">
 
     <select class="form-select" v-model="genre" @change="$emit('changeSelectedGenre', genre)">
-      <option selected>Selezionare un genere</option>
-      <option value="rock">Rock</option>
-      <option value="pop">Pop</option>
-      <option value="jazz">Jazz</option>
-      <option value="metal">Metal</option>
+      <option value="" selected>Selezionare un genere</option>
+      <option value="Rock">Rock</option>
+      <option value="Pop">Pop</option>
+      <option value="Jazz">Jazz</option>
+      <option value="Metal">Metal</option>
     </select>
 
   </header>
@@ -38,7 +38,7 @@ export default {
       width: 45px;
     }
     select {
-      width: 20%;
+      width: auto;
     }
   }
 </style>

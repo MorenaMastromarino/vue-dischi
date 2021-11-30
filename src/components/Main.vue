@@ -5,7 +5,7 @@
 
       <div v-if="!isLoading" class="row row-cols-5 gx-4 gy-3" >
         <SongCard 
-          v-for="(song, index) in songs"
+          v-for="(song, index) in selectedGenre"
           :key="index"
           :song = song
         />   
@@ -45,7 +45,7 @@ export default {
 
   methods: {
     getApi(){
-      axios.get(this.apiUrl)
+      axios.get(this.apiUrl) 
       .then(r => {        
         this.songs = r.data.response;
         this.isLoading = false;
@@ -56,7 +56,16 @@ export default {
       })
     }
   },
-  
+
+  computed:{
+    selectedGenre(){
+      if(this.genre === ''){
+        return this.songs;
+      }
+      return this.songs.filter(song => song.genre === this.genre);
+    }
+  },
+
   mounted(){
     this.getApi();
   }
