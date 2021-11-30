@@ -1,7 +1,7 @@
 <template>
   <div>
-    <Header @changeSelectedGenre="sendSelectedGenre"/>
-    <Main :genre="selectedGenre" />
+    <Header @changeSelectedGenre="sendSelectedGenre" :genresList="genres" />
+    <Main :genre="selectedGenre" @getGenresList="sendGenresList" />
   </div>
 </template>
 
@@ -17,13 +17,19 @@ export default {
   },
   data(){
     return {
-      selectedGenre:'',
+      selectedGenre: '',
+      genres: [],
     }
   },
   methods:{
     sendSelectedGenre(genre){
       this.selectedGenre = genre;      
+    },
+
+    sendGenresList(genresList){
+      this.genres = genresList;
     }
+    
   }
 }
 </script>
